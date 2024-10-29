@@ -1,26 +1,26 @@
 // schema/resolvers.js
-const Item = require('../models/Item');
+const Trip = require('../models/Trips');
 
 const resolvers = {
   Query: {
-    getItem: async (_, { id }) => await Item.findById(id),
-    getItems: async () => await Item.find(),
+    getTrip: async (_, { id }) => await Trip.findById(id),
+    getTrips: async () => await Trip.find(),
   },
   Mutation: {
-    addItem: async (_, { country, place, price, date }) => {
-      const item = new Item({ country, place, price, date });
-      return await item.save();
+    addTrip: async (_, { country, place, price, date }) => {
+      const trip = new Trip({ country, place, price, date });
+      return await trip.save();
     },
-    updateItem: async (_, { id, country, place, price, date }) => {
-      return await Item.findByIdAndUpdate(
+    updateTrip: async (_, { id, country, place, price, date }) => {
+      return await Trip.findByIdAndUpdate(
         id,
         { country, place, price, date},
         { new: true }
       );
     },
-    deleteItem: async (_, { id }) => {
-      await Item.findByIdAndDelete(id);
-      return `Item with ID ${id} deleted`;
+    deleteTrip: async (_, { id }) => {
+      await Trip.findByIdAndDelete(id);
+      return `Trip with ID ${id} deleted`;
     },
   },
 };

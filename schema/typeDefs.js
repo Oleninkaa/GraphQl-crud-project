@@ -3,23 +3,25 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
     scalar DateTime
-    type Item {
+    type Trip {
         id: ID!
         country: String!
         place: String!
         price: Float!
         date: DateTime!
+        createdAt: DateTime
+        updatedAt: DateTime
     }
 
     type Query {
-        getItem(id: ID!): Item
-        getItems: [Item]
+        getTrip(id: ID!): Trip
+        getTrips: [Trip]
     }
 
     type Mutation {
-        addItem(country: String!, place: String!, price: Float!, date: DateTime!): Item
-        updateItem(id: ID!, country: String!, place: String!, price: Float!, date: DateTime!): Item
-        deleteItem(id: ID!): String
+        addTrip(country: String!, place: String!, price: Float!, date: DateTime!): Trip
+        updateTrip(id: ID!, country: String!, place: String!, price: Float!, date: DateTime!): Trip
+        deleteTrip(id: ID!): String
     }
 `;
 
