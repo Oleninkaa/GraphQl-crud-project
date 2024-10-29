@@ -1,4 +1,3 @@
-// schema/resolvers.js
 const Trip = require('../models/Trips');
 
 const resolvers = {
